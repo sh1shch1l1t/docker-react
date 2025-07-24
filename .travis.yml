@@ -1,9 +1,12 @@
-sudo: required 
+language: generic
+
+sudo: required
+
 services:
   - docker
 
 before_install:
-  - docker build -t sh1sh/docker-react -f Dockerfile.dev .  
+  - docker build -t sh1sh/docker-react -f Dockerfile.dev .
 
 script:
-  - docker run -e CI=true test sh1sh/docker-react npm run test -- --coverage
+  - docker run -e CI=true sh1sh/docker-react npm run test -- --coverage
